@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Social Security Services</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Social Security Services</h1>
+    <div class="tabs">
+      <button class="tab-btn active" onclick="showTab(0)">Register</button>
+      <button class="tab-btn" onclick="showTab(1)">Details</button>
+      <button class="tab-btn" onclick="showTab(2)">Contribute</button>
+      <button class="tab-btn" onclick="showTab(3)">Withdraw</button>
+      <button class="tab-btn" onclick="showTab(4)">Contribution Details</button>
+      <button class="tab-btn" onclick="showTab(5)">Withdrawal Details</button>
+      <button class="tab-btn" onclick="showTab(6)">Total Balance</button>
+    </div>
+  
+    <div class="container">
+      
+      <div class="tab-content active">
+        <form id="storeForm">
+          <h2>Register</h2>
+          <h3>Enter your details to register</h3>
+          <input type="number" id="userId" placeholder="Enter ID" required>
+          <input type="text" id="userName" placeholder="Enter Name" required>
+          <button type="submit">Register</button>
+        </form>
+      </div>
+
+      <div class="tab-content">
+        <h2>Details</h2>
+        <h3>Enter an ID to get the details</h3>
+        <input type="number" id="getId" placeholder="Enter ID">
+        <button onclick="getName()">Details</button>
+        <pre id="output"></pre>
+      </div>
+
+      <div class="tab-content">
+        <h2>Contribute</h2>
+        <h3>Provide your ID and the amount to contribute in ETH</h3>
+        <form id="contributeForm">
+          <input type="number" id="contributeId" placeholder="Enter ID" required>
+          <input type="number" id="contributeAmount" placeholder="Amount to Contribute (ETH)" required>
+          <button type="submit">Contribute</button>
+        </form>
+      </div>
+
+      <div class="tab-content">
+        <h2>Withdraw</h2>
+        <h3>Enter your ID and the amount to withdraw in ETH</h3>
+        <form id="withdrawForm">
+          <input type="number" id="withdrawId" placeholder="Enter ID" required>
+          <input type="number" id="withdrawAmount" placeholder="Amount to Withdraw (ETH)" required>
+          <button type="submit">Withdraw</button>
+        </form>
+      </div>
+
+      <div class="tab-content">
+        <h2>Contribution Details</h2>
+        <h3>Enter an ID to see contribution details</h3>
+        <input type="number" id="getContributionId" placeholder="Enter ID for Contribution">
+        <button onclick="getContribution()">Contribution Details</button>
+        <pre id="contributionOutput"></pre>
+      </div>
+
+      <div class="tab-content">
+        <h2>Withdrawal Details</h2>
+        <h3>Enter an ID to see withdrawal details</h3>
+        <input type="number" id="getWithdrawalId" placeholder="Enter ID for Withdrawal">
+        <button onclick="getWithdrawal()">Withdrawal Details</button>
+        <pre id="withdrawalOutput"></pre>
+      </div>
+
+      <div class="tab-content">
+        <h2>Get Total Balance</h2>
+        <h3>Click to view the total balance</h3>
+        <button onclick="getTotalBalance()">Get Total Balance</button>
+        <pre id="totalBalanceOutput"></pre>
+      </div>
+    </div>
+
+  <script>
+    function showTab(index) {
+      const tabs = document.querySelectorAll(".tab-content");
+      const buttons = document.querySelectorAll(".tab-btn");
+      tabs.forEach((tab, i) => {
+        tab.classList.toggle("active", i === index);
+        buttons[i].classList.toggle("active", i === index);
+      });
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.8.2/dist/web3.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
